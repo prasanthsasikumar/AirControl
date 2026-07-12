@@ -91,6 +91,10 @@ if (require.main === module) {
     pingInterval: 10000, pingTimeout: 5000, maxHttpBufferSize: 1e6,
   });
 
+  // Registered before express.static: public/glasses/ is a real directory, and
+  // static's directory handler would otherwise 301-redirect /glasses -> /glasses/
+  // before this route ever ran.
+  app.get('/glasses', (_req, res) => res.sendFile(path.join(__dirname, 'public', 'glasses', 'index.html')));
   app.use(express.static(path.join(__dirname, 'public')));
   app.get('/read', (_req, res) => res.sendFile(path.join(__dirname, 'public', 'read.html')));
   app.get('/show', (_req, res) => res.sendFile(path.join(__dirname, 'public', 'show.html')));
