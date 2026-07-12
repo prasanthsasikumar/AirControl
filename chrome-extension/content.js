@@ -189,4 +189,19 @@
       }
     }
   });
+
+  // ── Teleprompter: poll Presenter View and push HUD state ──────────────────
+  let _prevState = null;
+  let _startedAt = Date.now();
+
+  setInterval(() => {
+    const state = NotesExtractor.readSlideState(document);
+    if (!state) return;                       // not presenter view — nothing to send
+    if (!NotesExtractor.hasChanged(_prevState, state)) return;
+    _prevState = state;
+    chrome.runtime.sendMessage({
+      type: 'hud-out',
+      payload: { index: state.index, total: state.total, notes: state.notes, startedAt: _startedAt },
+    }).catch(() => {});
+  }, 700);
 })();

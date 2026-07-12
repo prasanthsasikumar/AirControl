@@ -28,7 +28,7 @@
         "https://*.officeapps.live.com/*",
         "https://www.canva.com/design/*"
       ],
-      "js": ["content.js"],
+      "js": ["notesExtractor.js", "content.js"],
       "run_at": "document_idle",
       "all_frames": true
     }

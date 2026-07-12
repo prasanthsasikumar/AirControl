@@ -248,6 +248,11 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       console.log('[bg] swap hands updated:', msg.swapHands);
       sendResponse({ ok: true });
       return true;
+
+    case 'hud-out':
+      if (socket && socket.connected) socket.emit('hud', msg.payload);
+      sendResponse({ ok: true });
+      return true;
   }
 });
 
