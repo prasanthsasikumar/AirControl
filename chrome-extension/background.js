@@ -294,12 +294,12 @@ function startListening() {
   socket.on('hand', (data) => {
     const handedness = data.handedness?.label || 'Right';
     let action = detector.process(data.landmarks, handedness);
-    
+
     // Swap action if swapHands is enabled
     if (action && currentConfig.swapHands) {
       action = action === 'next' ? 'prev' : 'next';
     }
-    
+
     if (action) {
       console.log('[bg] gesture detected:', action);
       sendToActiveTab({ type: 'slide-action', action });
@@ -315,6 +315,13 @@ function startListening() {
       handedness,
       action,
     });
+  });
+
+  socket.on('intent', (data) => {
+    let action = data && data.action === 'prev' ? 'prev' : 'next';
+    if (currentConfig.swapHands) action = action === 'next' ? 'prev' : 'next';
+    console.log('[bg] intent received:', action);
+    sendToActiveTab({ type: 'slide-action', action });
   });
 
   socket.on('disconnect', () => {
