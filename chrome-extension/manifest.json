@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "SpatialGrip — Gesture Slide Control",
+  "name": "AirControl — Gesture Slide Control",
   "version": "1.0.0",
-  "description": "Control Google Slides, PowerPoint Online and other presentations with hand gestures via SpatialGrip.",
+  "description": "Control Google Slides, PowerPoint Online and other presentations with hand gestures via AirControl.",
   "permissions": [
     "storage",
     "activeTab",
@@ -16,7 +16,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "SpatialGrip"
+    "default_title": "AirControl"
   },
   "background": {
     "service_worker": "background.js"

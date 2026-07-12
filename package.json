@@ -1,5 +1,5 @@
 {
-  "name": "spatialgrip",
+  "name": "aircontrol",
   "version": "1.0.0",
   "description": "Stream camera from wearable/phone to laptop and manipulate 3D objects via hand tracking",
   "main": "server.js",

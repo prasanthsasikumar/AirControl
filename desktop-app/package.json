@@ -1,7 +1,7 @@
 {
-  "name": "spatialgrip-desktop",
+  "name": "aircontrol-desktop",
   "version": "1.0.0",
-  "description": "SpatialGrip Desktop — Control presentations with hand gestures",
+  "description": "AirControl Desktop — Control presentations with hand gestures",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -9,7 +9,7 @@
     "build:win": "electron-builder --win",
     "build:all": "electron-builder -mwl"
   },
-  "author": "SpatialGrip",
+  "author": "AirControl",
   "license": "MIT",
   "dependencies": {
     "socket.io-client": "^4.8.3",
@@ -20,8 +20,8 @@
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "appId": "com.spatialgrip.desktop",
-    "productName": "SpatialGrip",
+    "appId": "com.aircontrol.desktop",
+    "productName": "AirControl",
     "mac": {
       "category": "public.app-category.productivity",
       "target": ["dmg", "zip"]

@@ -1,5 +1,5 @@
 /**
- * renderer.js — SpatialGrip Desktop UI logic
+ * renderer.js — AirControl Desktop UI logic
  */
 
 const DEFAULT_SERVER = 'https://aircontrol.flowsxr.com';
@@ -62,7 +62,7 @@ function init() {
   updateGestureLabels();
   
   // Get current status from main process
-  window.spatialgrip.getStatus().then((resp) => {
+  window.aircontrol.getStatus().then((resp) => {
     if (resp) {
       active = resp.active;
       updateUI(resp.active, resp.readerConnected);
@@ -73,7 +73,7 @@ function init() {
 init();
 
 // ── Listen for status updates ─────────────────────────────────────────────────
-window.spatialgrip.onStatusUpdate((data) => {
+window.aircontrol.onStatusUpdate((data) => {
   active = data.active;
   updateUI(data.active, data.readerConnected);
 });
@@ -81,7 +81,7 @@ window.spatialgrip.onStatusUpdate((data) => {
 // ── Start / Stop button ───────────────────────────────────────────────────────
 startBtn.addEventListener('click', async () => {
   if (active) {
-    await window.spatialgrip.stop();
+    await window.aircontrol.stop();
     active = false;
     updateUI(false, false);
   } else {
@@ -91,7 +91,7 @@ startBtn.addEventListener('click', async () => {
       updateRoomDisplay(currentRoomCode);
     }
 
-    await window.spatialgrip.start({
+    await window.aircontrol.start({
       serverUrl,
       roomCode: currentRoomCode,
       swapHands
@@ -109,9 +109,9 @@ regenerateBtn.addEventListener('click', async () => {
 
   if (active) {
     // Restart with new room
-    await window.spatialgrip.stop();
+    await window.aircontrol.stop();
     const serverUrl = serverUrlEl.value.trim() || DEFAULT_SERVER;
-    await window.spatialgrip.start({
+    await window.aircontrol.start({
       serverUrl,
       roomCode: newCode,
       swapHands
@@ -150,7 +150,7 @@ swapHandsEl.addEventListener('change', () => {
   updateGestureLabels();
   
   if (active) {
-    window.spatialgrip.updateSwapHands(swapHands);
+    window.aircontrol.updateSwapHands(swapHands);
   }
 });
 

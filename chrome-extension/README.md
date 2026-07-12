@@ -1,11 +1,11 @@
-# SpatialGrip Chrome Extension — Gesture Slide Control
+# AirControl Chrome Extension — Gesture Slide Control
 
 Control Google Slides, PowerPoint Online, and Canva presentations using hand gestures from your phone.
 
 ## How It Works
 
 ```
-Phone (/read)  →  SpatialGrip Server  →  Chrome Extension  →  Google Slides
+Phone (/read)  →  AirControl Server  →  Chrome Extension  →  Google Slides
   hand tracking       Socket.IO relay       gesture detection     keyboard events
 ```
 
@@ -24,7 +24,7 @@ Each tap triggers **exactly one slide change**. The system enforces a 500ms cool
 
 ## Setup
 
-### 1. Start the SpatialGrip server
+### 1. Start the AirControl server
 
 ```bash
 cd ..
@@ -44,7 +44,7 @@ npm start
 1. Open **Google Slides** (or PowerPoint Online) in Chrome and enter presentation mode
 2. Open `/show` on your laptop — note the **room code**
 3. Open `/read` on your phone — enter the room code
-4. Click the **SpatialGrip extension icon** in Chrome toolbar
+4. Click the **AirControl extension icon** in Chrome toolbar
 5. Enter the same **room code** and server URL (`http://localhost:3000`)
 6. Click **Start**
 

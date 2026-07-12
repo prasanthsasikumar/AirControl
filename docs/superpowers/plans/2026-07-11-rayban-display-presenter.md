@@ -229,7 +229,7 @@ if (require.main === module) {
   attachRelay(io);
 
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`\n  SpatialGrip running on http://localhost:${PORT}`);
+    console.log(`\n  AirControl running on http://localhost:${PORT}`);
     console.log(`  Open /show on your laptop, /read on your phone.\n`);
   });
 }
@@ -243,7 +243,7 @@ Expected: PASS — both relay tests green.
 - [ ] **Step 6: Sanity-check the server still boots**
 
 Run: `node server.js`
-Expected: prints "SpatialGrip running on http://localhost:3000". Stop with Ctrl-C.
+Expected: prints "AirControl running on http://localhost:3000". Stop with Ctrl-C.
 
 - [ ] **Step 7: Commit**
 

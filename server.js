@@ -1,5 +1,5 @@
 /**
- * SpatialGrip — Server with Socket.IO relay
+ * AirControl — Server with Socket.IO relay
  *
  * Serves static files from /public and relays hand-tracking data between
  * /read (phone) and /show (laptop) via Socket.IO rooms.
@@ -102,7 +102,7 @@ if (require.main === module) {
   attachRelay(io);
 
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`\n  SpatialGrip running on http://localhost:${PORT}`);
+    console.log(`\n  AirControl running on http://localhost:${PORT}`);
     console.log(`  Open /show on your laptop, /read on your phone.\n`);
   });
 }

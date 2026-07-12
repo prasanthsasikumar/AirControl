@@ -1,7 +1,7 @@
 /**
- * background.js — SpatialGrip Chrome Extension service worker
+ * background.js — AirControl Chrome Extension service worker
  *
- * 1. Connects to the SpatialGrip server via native WebSocket
+ * 1. Connects to the AirControl server via native WebSocket
  *    (speaks the Socket.IO EIO4 wire protocol — no external libraries).
  * 2. Creates a room and receives hand-tracking data from phones that join.
  * 3. Runs slide-gesture detection (single tap with cooldown).

@@ -1,4 +1,4 @@
-# SpatialGrip Desktop App
+# AirControl Desktop App
 
 Native macOS/Windows desktop application for controlling presentations with hand gestures.
 
@@ -29,7 +29,7 @@ npm install
 npm start
 ```
 
-This opens the SpatialGrip window with:
+This opens the AirControl window with:
 - Auto-generated room code
 - QR code to scan with your phone
 - Start/Stop controls
@@ -41,13 +41,13 @@ This opens the SpatialGrip window with:
 ```bash
 npm run build:mac
 ```
-Output: `dist/SpatialGrip-1.0.0.dmg`
+Output: `dist/AirControl-1.0.0.dmg`
 
 ### Build for Windows (.exe)
 ```bash
 npm run build:win
 ```
-Output: `dist/SpatialGrip Setup 1.0.0.exe`
+Output: `dist/AirControl Setup 1.0.0.exe`
 
 ### Build for All Platforms
 ```bash
@@ -82,7 +82,7 @@ On first run, macOS will ask for **Accessibility permissions**:
 
 1. System Preferences → Security & Privacy → Privacy → Accessibility
 2. Click the lock to make changes
-3. Add `SpatialGrip.app` or `Electron.app` (if dev mode)
+3. Add `AirControl.app` or `Electron.app` (if dev mode)
 4. Enable the checkbox
 
 This allows the app to send keyboard events system-wide.

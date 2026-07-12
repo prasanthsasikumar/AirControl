@@ -1,5 +1,5 @@
 /**
- * content.js — SpatialGrip Chrome Extension content script
+ * content.js — AirControl Chrome Extension content script
  *
  * Injected into Google Slides / PowerPoint Online / Canva pages.
  * Receives gesture commands from the background service worker and
@@ -16,18 +16,18 @@
   else if (host.includes('officeapps.live.com')) platform = 'powerpoint';
   else if (host.includes('canva.com'))           platform = 'canva';
 
-  console.log(`[SpatialGrip] content script loaded on ${platform}`);
+  console.log(`[AirControl] content script loaded on ${platform}`);
 
   // ── Overlay indicator ───────────────────────────────────────────────────
   const overlay = document.createElement('div');
-  overlay.id = 'spatialgrip-overlay';
+  overlay.id = 'aircontrol-overlay';
   overlay.innerHTML = `
     <div class="sg-icon">✋</div>
-    <div class="sg-label">SpatialGrip</div>
+    <div class="sg-label">AirControl</div>
   `;
   const style = document.createElement('style');
   style.textContent = `
-    #spatialgrip-overlay {
+    #aircontrol-overlay {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -47,26 +47,26 @@
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.1);
     }
-    #spatialgrip-overlay.sg-pinching {
+    #aircontrol-overlay.sg-pinching {
       opacity: 0.9;
       background: rgba(0, 100, 200, 0.8);
       border-color: rgba(0, 200, 255, 0.5);
     }
-    #spatialgrip-overlay.sg-action-next {
+    #aircontrol-overlay.sg-action-next {
       opacity: 1;
       background: rgba(0, 180, 80, 0.85);
       transform: translateX(-8px);
     }
-    #spatialgrip-overlay.sg-action-prev {
+    #aircontrol-overlay.sg-action-prev {
       opacity: 1;
       background: rgba(200, 120, 0, 0.85);
       transform: translateX(8px);
     }
-    #spatialgrip-overlay .sg-icon {
+    #aircontrol-overlay .sg-icon {
       font-size: 18px;
       line-height: 1;
     }
-    #spatialgrip-overlay .sg-label {
+    #aircontrol-overlay .sg-label {
       white-space: nowrap;
     }
   `;
@@ -78,7 +78,7 @@
 
   // ── Keyboard dispatch ───────────────────────────────────────────────────
   function dispatchKey(key) {
-    console.log(`[SpatialGrip] dispatching ${key}`);
+    console.log(`[AirControl] dispatching ${key}`);
 
     const keyCode = key === 'ArrowRight' ? 39 : key === 'ArrowLeft' ? 37 : 0;
     
@@ -98,20 +98,20 @@
     if (presentIframe) {
       try {
         if (presentIframe.contentDocument) {
-          console.log('[SpatialGrip] → dispatching to presentation iframe');
+          console.log('[AirControl] → dispatching to presentation iframe');
           presentIframe.contentDocument.dispatchEvent(new KeyboardEvent('keydown', opts));
           presentIframe.contentDocument.dispatchEvent(new KeyboardEvent('keyup', opts));
           return;
         }
       } catch (e) {
-        console.warn('[SpatialGrip] iframe access denied:', e);
+        console.warn('[AirControl] iframe access denied:', e);
       }
     }
 
     // 2. Google Slides viewer content (edit mode)
     const viewer = document.querySelector('.punch-viewer-content');
     if (viewer) {
-      console.log('[SpatialGrip] → dispatching to viewer content');
+      console.log('[AirControl] → dispatching to viewer content');
       viewer.dispatchEvent(new KeyboardEvent('keydown', opts));
       viewer.dispatchEvent(new KeyboardEvent('keyup', opts));
       return;
@@ -120,27 +120,27 @@
     // 3. Application role element (Google Slides)
     const app = document.querySelector('[role="application"]');
     if (app) {
-      console.log('[SpatialGrip] → dispatching to application element');
+      console.log('[AirControl] → dispatching to application element');
       app.dispatchEvent(new KeyboardEvent('keydown', opts));
       app.dispatchEvent(new KeyboardEvent('keyup', opts));
       return;
     }
 
     // 4. Document body (general fallback)
-    console.log('[SpatialGrip] → dispatching to document body');
+    console.log('[AirControl] → dispatching to document body');
     document.body.focus();
     document.body.dispatchEvent(new KeyboardEvent('keydown', opts));
     document.body.dispatchEvent(new KeyboardEvent('keyup', opts));
   }
 
   function nextSlide() {
-    console.log('[SpatialGrip] → Next slide');
+    console.log('[AirControl] → Next slide');
     dispatchKey('ArrowRight');
     flashOverlay('next');
   }
 
   function prevSlide() {
-    console.log('[SpatialGrip] ← Previous slide');
+    console.log('[AirControl] ← Previous slide');
     dispatchKey('ArrowLeft');
     flashOverlay('prev');
   }
@@ -165,7 +165,7 @@
     flashTimeout = setTimeout(() => {
       overlay.className = '';
       iconEl.textContent = '✋';
-      labelEl.textContent = 'SpatialGrip';
+      labelEl.textContent = 'AirControl';
     }, 800);
   }
 
@@ -185,7 +185,7 @@
       } else if (!msg.pinching && !msg.action) {
         overlay.classList.remove('sg-pinching');
         iconEl.textContent = '✋';
-        labelEl.textContent = 'SpatialGrip';
+        labelEl.textContent = 'AirControl';
       }
     }
   });

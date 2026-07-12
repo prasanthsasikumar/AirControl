@@ -1,5 +1,5 @@
 /**
- * popup.js — SpatialGrip Chrome Extension popup logic
+ * popup.js — AirControl Chrome Extension popup logic
  */
 
 const DEFAULT_SERVER = 'https://aircontrol.flowsxr.com';

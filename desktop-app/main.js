@@ -1,8 +1,8 @@
 /**
- * main.js — SpatialGrip Desktop App (Electron main process)
+ * main.js — AirControl Desktop App (Electron main process)
  *
  * 1. Creates a window with QR code UI
- * 2. Connects to SpatialGrip server via Socket.IO
+ * 2. Connects to AirControl server via Socket.IO
  * 3. Receives hand gestures
  * 4. Emulates keyboard keys (LEFT/RIGHT arrows) system-wide
  */

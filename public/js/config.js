@@ -1,5 +1,5 @@
 /**
- * config.js — Shared constants for SpatialGrip
+ * config.js — Shared constants for AirControl
  *
  * Signaling + data relay uses Socket.IO (server-mediated).
  */

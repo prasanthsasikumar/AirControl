@@ -4,7 +4,7 @@
 
 const { contextBridge, ipcRenderer } = require('electron');
 
-contextBridge.exposeInMainWorld('spatialgrip', {
+contextBridge.exposeInMainWorld('aircontrol', {
   start: (config) => ipcRenderer.invoke('start', config),
   stop: () => ipcRenderer.invoke('stop'),
   getStatus: () => ipcRenderer.invoke('get-status'),
