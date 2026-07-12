@@ -100,7 +100,7 @@ Swipe-right is reserved (no-op in v1) to avoid accidental double-advance.
 
 ## Error handling
 
-- **Relay disconnect** → HUD shows a "disconnected" state; client auto-reconnects (Socket.IO reconnection).
+- **Relay disconnect** → HUD shows a "disconnected" state; the presenter reloads the `/glasses` page to reconnect. There is no automatic reconnection in v1 (auto-reconnect is a fast-follow).
 - **Notes not found** for the current slide → HUD gracefully shows slide number + timer only.
 - **Slide index drift** → avoided by reading the index from the DOM as ground truth each update.
 - **Room not found / not paired** → HUD prompts to (re)enter a room code.

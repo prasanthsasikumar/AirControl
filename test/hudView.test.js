@@ -21,3 +21,9 @@ test('passes notes through, defaulting empty to a placeholder', () => {
   assert.strictEqual(formatHud({ index: 0, total: 1, notes: 'hi', startedAt: 0 }, 0).notes, 'hi');
   assert.strictEqual(formatHud({ index: 0, total: 1, notes: '', startedAt: 0 }, 0).notes, '(no notes for this slide)');
 });
+
+test('renders a dash slide label when the slide position is unknown', () => {
+  const out = formatHud({ index: null, total: null, notes: 'hi', startedAt: 0 }, 0);
+  assert.strictEqual(out.slideLabel, '– / –');
+  assert.strictEqual(out.notes, 'hi');
+});

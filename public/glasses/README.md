@@ -125,7 +125,7 @@ The glasses app uses a lightweight Socket.IO client (`miniSocket.js`) with no ex
 2. Joins the relay room on confirmation
 3. Listens for `hud` messages and renders them to the HUD display
 4. Emits `intent` messages when Neural Band gestures are detected
-5. Handles disconnection and reconnection gracefully
+5. Shows a disconnected state on drop; reload the page to reconnect (no auto-reconnect in v1)
 
 The HUD view (`hudView.js`) formats the relay state into human-readable strings (e.g., elapsed time, 1-based slide labels).
 
@@ -137,6 +137,7 @@ The HUD view (`hudView.js`) formats the relay state into human-readable strings 
 | HUD shows "presenter left" | Extension crashed or closed | Restart the extension and re-pair |
 | No notes appear | Slide has no notes in Google Slides | Add notes in Presenter View on the laptop |
 | Gestures not responding | Glasses web app not connected or focused | Tap the HUD to refocus; check browser console for errors |
+| HUD stuck on "disconnected" | Relay connection dropped | Reload the `/glasses` page to reconnect |
 
 ## See Also
 

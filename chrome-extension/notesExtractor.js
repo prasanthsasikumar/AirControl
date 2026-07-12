@@ -21,7 +21,7 @@
     if (!notesEl) return null; // not in presenter view
     const notes = (notesEl.innerText || notesEl.textContent || '').trim();
 
-    let index = 0, total = 0;
+    let index = null, total = null;
     const posEl = doc.querySelector(SEL_POSITION);
     const text = posEl ? (posEl.getAttribute('aria-label') || posEl.textContent || '') : '';
     const m = text.match(/(\d+)\s*(?:of|\/)\s*(\d+)/i);
