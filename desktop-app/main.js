@@ -12,7 +12,7 @@ const path = require('path');
 const io = require('socket.io-client');
 const robot = require('robotjs');
 
-const DEFAULT_SERVER = 'https://spatialgrip.flowsxr.com';
+const DEFAULT_SERVER = 'https://aircontrol.flowsxr.com';
 
 let mainWindow;
 let socket = null;

@@ -216,7 +216,7 @@ let socket = null;
 let detector = new SlideGestureDetector();
 let isActive = false;
 let readerConnected = false;
-let currentConfig = { serverUrl: 'https://spatialgrip.flowsxr.com', roomCode: '', swapHands: false };
+let currentConfig = { serverUrl: 'https://aircontrol.flowsxr.com', roomCode: '', swapHands: false };
 
 // ─── Message handling from popup / content script ─────────────────────────────
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {

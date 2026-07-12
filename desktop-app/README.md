@@ -92,7 +92,7 @@ No special permissions needed - keyboard simulation works out of the box.
 
 ## Settings
 
-- **Server URL**: Default is `https://spatialgrip.flowsxr.com` (can use `http://localhost:3000` for local dev)
+- **Server URL**: Default is `https://aircontrol.flowsxr.com` (can use `http://localhost:3000` for local dev)
 - **Swap hands**: Toggle to switch left/right hand actions
 
 ## Troubleshooting

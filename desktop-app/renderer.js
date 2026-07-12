@@ -2,7 +2,7 @@
  * renderer.js — SpatialGrip Desktop UI logic
  */
 
-const DEFAULT_SERVER = 'https://spatialgrip.flowsxr.com';
+const DEFAULT_SERVER = 'https://aircontrol.flowsxr.com';
 
 const serverUrlEl = document.getElementById('server-url');
 const roomCodeEl = document.getElementById('room-code');

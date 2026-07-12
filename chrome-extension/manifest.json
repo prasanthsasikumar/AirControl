@@ -10,7 +10,7 @@
     "tabs"
   ],
   "host_permissions": [
-    "https://spatialgrip.flowsxr.com/*",
+    "https://aircontrol.flowsxr.com/*",
     "http://localhost:*/*",
     "http://127.0.0.1:*/*"
   ],
