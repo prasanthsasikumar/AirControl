@@ -51,6 +51,8 @@ Emitted when a Neural Band gesture triggers a slide navigation.
 
 ## Gesture Mapping
 
+These mappings apply while **presenting** (the HUD screen). The **pairing screen** interprets the same gestures differently — see [Installation](#installation-on-ray-ban-display) step 3 (left/right change a character, up/down move the cursor, pinch confirms).
+
 | Gesture | Keyboard Event | Action |
 |---------|---|---|
 | **Pinch / Tap** | `Enter` | Next slide |
