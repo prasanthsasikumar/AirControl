@@ -27,11 +27,15 @@
   }
 
   function connect() {
-    localStorage.setItem(ROOM_KEY, code);
-    socket = new MiniSocketIO(SERVER_URL);
-    socket.on('connect', () => {
-      socket.emit('join-room', code, (resp) => {
+    if (socket) { socket.disconnect(); }
+    const s = new MiniSocketIO(SERVER_URL);
+    socket = s;
+    s.on('connect', () => {
+      if (socket !== s) return;
+      s.emit('join-room', code, (resp) => {
+        if (socket !== s) return;
         if (resp && resp.ok) {
+          localStorage.setItem(ROOM_KEY, code);
           showScreen('hud');
           setStatus('connected', true);
         } else {
@@ -39,10 +43,20 @@
         }
       });
     });
-    socket.on('hud', (data) => { lastHud = data; renderHud(); });
-    socket.on('room-closed', () => setStatus('presenter left', false));
-    socket.on('disconnect', () => setStatus('disconnected', false));
-    socket.connect();
+    s.on('hud', (data) => {
+      if (socket !== s) return;
+      lastHud = data;
+      renderHud();
+    });
+    s.on('room-closed', () => {
+      if (socket !== s) return;
+      setStatus('presenter left', false);
+    });
+    s.on('disconnect', () => {
+      if (socket !== s) return;
+      setStatus('disconnected', false);
+    });
+    s.connect();
   }
 
   function setStatus(text, ok) {
