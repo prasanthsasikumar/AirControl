@@ -5,7 +5,8 @@ const { hasChanged, readSlideState } = require('../chrome-extension/notesExtract
 function makeFakeDoc({ positionEl }) {
   return {
     querySelector(sel) {
-      if (sel.includes('speakernotes')) return { innerText: 'my notes' };
+      // SEL_NOTES targets the notes body; SEL_POSITION targets the "Slide N of M" header.
+      if (sel.includes('text-body')) return { innerText: 'my notes' };
       return positionEl;
     },
   };
@@ -29,7 +30,7 @@ test('readSlideState returns null index/total when the position element is absen
   assert.deepStrictEqual(readSlideState(fakeDoc), { index: null, total: null, notes: 'my notes' });
 });
 
-test('readSlideState parses "N of M" text into 0-based index and total', () => {
-  const fakeDoc = makeFakeDoc({ positionEl: { getAttribute: () => null, textContent: '3 of 12' } });
-  assert.deepStrictEqual(readSlideState(fakeDoc), { index: 2, total: 12, notes: 'my notes' });
+test('readSlideState parses "Slide N of M" header into 0-based index and total', () => {
+  const fakeDoc = makeFakeDoc({ positionEl: { getAttribute: () => null, textContent: 'Slide 8 of 57' } });
+  assert.deepStrictEqual(readSlideState(fakeDoc), { index: 7, total: 57, notes: 'my notes' });
 });
