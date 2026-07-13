@@ -33,6 +33,14 @@
     #hud .status.ok { color: #35c46a; }
     #hud .notes { flex: 1; margin-top: 16px; font-size: 24px; line-height: 1.4;
       overflow-y: auto; white-space: pre-wrap; }
+    /* Touch: invisible edge tap-zones (phone stand-in); shown only on touch devices */
+    #hud { position: relative; }
+    .tapzone { position: absolute; top: 0; bottom: 0; width: 26%; display: none;
+      align-items: center; z-index: 5; }
+    .tapzone.left  { left: 0;  justify-content: flex-start; padding-left: 6px; }
+    .tapzone.right { right: 0; justify-content: flex-end;   padding-right: 6px; }
+    body.touch .tapzone { display: flex; }
+    .tap-hint { font-size: 44px; opacity: 0.22; user-select: none; }
   </style>
 </head>
 <body>
@@ -50,6 +58,8 @@
     </div>
     <div class="status" id="hud-status">connecting…</div>
     <div class="notes" id="hud-notes">(no notes for this slide)</div>
+    <div id="tap-prev" class="tapzone left"><span class="tap-hint">‹</span></div>
+    <div id="tap-next" class="tapzone right"><span class="tap-hint">›</span></div>
   </div>
 
   <script src="/js/config.js"></script>

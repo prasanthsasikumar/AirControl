@@ -88,7 +88,8 @@ if (require.main === module) {
   const server = http.createServer(app);
   const io = new Server(server, {
     cors: { origin: '*' },
-    pingInterval: 10000, pingTimeout: 5000, maxHttpBufferSize: 1e6,
+    // Tolerant heartbeat so a briefly-backgrounded tab isn't dropped instantly.
+    pingInterval: 20000, pingTimeout: 20000, maxHttpBufferSize: 1e6,
   });
 
   // Registered before express.static: public/glasses/ is a real directory, and
