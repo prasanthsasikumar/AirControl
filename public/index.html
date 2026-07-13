@@ -31,7 +31,10 @@
     }
     .links {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 24px;
+      max-width: 900px;
     }
     a {
       display: flex;
@@ -62,19 +65,24 @@
   </style>
 </head>
 <body>
-  <h1>Spatial<span>Grip</span></h1>
-  <p class="sub">Hand-tracked 3D manipulation over WebRTC</p>
+  <h1>Air<span>Control</span></h1>
+  <p class="sub">Camera- and gesture-based control for desktop apps — no mouse or clicker</p>
 
   <div class="links">
     <a href="/read">
       <div class="icon">📱</div>
       <div class="label">/read</div>
-      <div class="desc">Open on phone — sends camera + hand data</div>
+      <div class="desc">Open on phone — camera hand-tracking sends gestures</div>
     </a>
     <a href="/show">
       <div class="icon">🖥️</div>
       <div class="label">/show</div>
-      <div class="desc">Open on laptop — 3D viewer</div>
+      <div class="desc">Open on laptop — pair a phone and drive your slides</div>
+    </a>
+    <a href="/glasses">
+      <div class="icon">🕶️</div>
+      <div class="label">/glasses</div>
+      <div class="desc">Ray-Ban Display — hands-free slides + private teleprompter HUD</div>
     </a>
   </div>
 
