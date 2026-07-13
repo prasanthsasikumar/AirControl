@@ -51,7 +51,7 @@ Emitted when a Neural Band gesture triggers a slide navigation.
 
 ## Gesture Mapping
 
-These mappings apply while **presenting** (the HUD screen). The **pairing screen** interprets the same gestures differently — see [Installation](#installation-on-ray-ban-display) step 3 (left/right change a character, up/down move the cursor, pinch confirms).
+These mappings apply while **presenting** (the HUD screen). The **pairing screen** interprets the same gestures differently — see [Installation](#installation-on-ray-ban-display) step 3 (up/down change the highlighted character, left/right move between slots, pinch confirms).
 
 | Gesture | Keyboard Event | Action |
 |---------|---|---|
@@ -76,9 +76,9 @@ These mappings apply while **presenting** (the HUD screen). The **pairing screen
 3. **Pair with the Chrome extension:**
    - On your laptop, open Google Slides in Presenter View and start the Chrome extension
    - The extension displays a **room code** (6 characters, e.g., `ABCXYZ`)
-   - On the Ray-Ban Display pairing screen:
-     - Swipe **left/right** to change each character digit-by-digit
-     - Swipe **up/down** to move the cursor to the next character
+   - On the Ray-Ban Display pairing screen (the highlighted slot shows which character you're editing):
+     - Swipe **up/down** to change the highlighted character
+     - Swipe **left/right** to move between character slots
      - **Pinch** to confirm once all characters match
    - The glasses app will connect and show the HUD
    - The **last room code** is saved in browser local storage (`aircontrol.room`) for next time

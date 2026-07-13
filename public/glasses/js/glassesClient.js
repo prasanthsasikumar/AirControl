@@ -23,7 +23,14 @@
     $(id).classList.add('active');
   }
   function renderPairing() {
-    $('pair-code').textContent = code;
+    const el = $('pair-code');
+    el.innerHTML = '';
+    for (let i = 0; i < code.length; i++) {
+      const slot = document.createElement('span');
+      slot.className = 'slot' + (i === cursor ? ' slot-active' : '');
+      slot.textContent = code[i];
+      el.appendChild(slot);
+    }
   }
 
   function connect() {
@@ -83,15 +90,12 @@
   });
 
   function handlePairingKey(e) {
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-      const delta = e.key === 'ArrowRight' ? 1 : -1;
-      const i = ALPHABET.indexOf(code[cursor]);
-      const next = (i + delta + ALPHABET.length) % ALPHABET.length;
-      code = code.slice(0, cursor) + ALPHABET[next] + code.slice(cursor + 1);
-      renderPairing();
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-      cursor = (cursor + (e.key === 'ArrowDown' ? 1 : -1) + CODE_LEN) % CODE_LEN;
-    } else if (e.key === 'Enter') {
+    // Left/right move between slots; up/down cycle the highlighted character.
+    const next = Pairing.applyKey({ code, cursor }, e.key, ALPHABET);
+    code = next.code;
+    cursor = next.cursor;
+    renderPairing();
+    if (next.submit) {
       $('pair-status').textContent = 'Connecting…';
       connect();
     }
